@@ -4,17 +4,17 @@ $banner_text = "Welecome to your custom Windows Terminal Environment"
 function Test-AdministratorPrivileges {
     $isAdmin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if ($isAdmin) {
-        Write-Host "This PowerShell session is running with Administrator privileges." -BackgroundColor Black -ForegroundColor Red
+        Write-Host -BackgroundColor Black -ForegroundColor Red "This PowerShell session is running with Administrator privileges."
     } else {
-        Write-Host "This PowerShell session is NOT running with Administrator privileges." -BackgroundColor Black -ForegroundColor Green
+        Write-Host -BackgroundColor Black -ForegroundColor Green "This PowerShell session is NOT running with Administrator privileges " 
+        
     }
 }
-
-
+Write-host ([char]9996 +"  ") -NoNewline
 Write-Host $banner_text `n"Your data is located at: "$env:OneDriveConsumer -BackgroundColor Black -ForegroundColor Green
 Write-Host "Logged-in username: $env:USERNAME" -BackgroundColor Black -ForegroundColor Green
 Write-Host "Your computername: $env:COMPUTERNAME" -BackgroundColor Black -ForegroundColor Green
-Write-Host "Some of your custom terminal functions: `n $aliasKeys"
+Write-Host "Some of your custom terminal functions:  $aliasKeys"
 Test-AdministratorPrivileges
 
 #load starship config
