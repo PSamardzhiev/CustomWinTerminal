@@ -1,6 +1,6 @@
 Clear-Host
-$aliasKeys = @("v", "t", "k", "vs", "py", "rst", "hvm")
-$banner_text = "Welecome to your custom Windows Terminal Environment"
+$aliasKeys = @("v,", "t,", "k,", "vs,", "py,", "rst,", "hvm,", "teleport <vm> <git>,")
+$banner_text = "Welecome to your custom Windows Terminal Environment "
 function Test-AdministratorPrivileges {
     $isAdmin = [bool](([System.Security.Principal.WindowsIdentity]::GetCurrent()).groups -match "S-1-5-32-544")
     if ($isAdmin) {
@@ -24,6 +24,10 @@ function rst {
     Invoke-Command -ScriptBlock {
         Powershell.exe
     }
+}
+function teleport($fkey) {
+    if ($fkey -eq "vm") { set-location -Path D:\LVMs}
+    elseif ($fkey -eq "git") { Set-Location -Path 'D:\GIT Repos'}
 }
 
 foreach ($key in $aliasKeys) {
