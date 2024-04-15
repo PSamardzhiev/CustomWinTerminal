@@ -26,7 +26,7 @@ function rst {
     }
 }
 function teleport($fkey) {
-    if ($fkey -eq "vm") { set-location -Path D:\LVMs}
+    if ($fkey -eq "vm") { Set-Location -Path D:\LVMs}
     elseif ($fkey -eq "git") { Set-Location -Path 'D:\GIT Repos'}
 }
 
